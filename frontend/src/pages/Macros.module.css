@@ -1,0 +1,23 @@
+.progress{
+    --size:140px;
+    --percentage:0;
+    --color: red;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size: 32px;
+    font-weight:bold;
+    color: white;
+
+    background: conic-gradient(var(--color) calc(var(--percentage)*1%)),
+     gray calc(var(--percentage)*1%);
+    
+    mask: radial-gradient(circle, transparent 58%, black 60%);
+}
+
+.macros{
+    display:flex;
+}
