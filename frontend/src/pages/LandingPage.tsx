@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import './LandingPage.css'
+import styles from './LandingPage.module.css'
 export default function LandingPage(){
     const [username,setUsername] = useState("");
     const [password,setPassword] = useState("");
@@ -20,9 +20,9 @@ export default function LandingPage(){
     }
 
     return(
-        <div className="landing-page">
-            <div className="login">
-                <form className="login-form" onSubmit={handleLogin}>
+        <div className={styles['landing-page']}>
+            <div className={styles["login"]}>
+                <form className={styles["login-form"]} onSubmit={handleLogin}>
                     <input type="text"
                         placeholder="username"
                         value={username}
@@ -33,7 +33,7 @@ export default function LandingPage(){
                         value={password}
                         onChange={(e)=>handlePassword(e.target.value)}
                     />
-                    <button type="submit"> Login</button>
+                    <button className={styles['login-button']} type="submit"> Login</button>
                 </form>
             </div>
         </div>

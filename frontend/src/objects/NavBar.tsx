@@ -1,10 +1,10 @@
 import Button from './Button.tsx';
-import './NavBar.css'
+import styles from './NavBar.module.css'
 export default function NavBar(){
 
 
     return (
-        <div className="nav-bar">
+        <div className={styles.navBar}>
             <Button buttonName="Home"/>
             <Button buttonName="login" />
 
