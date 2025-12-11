@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import styles from './LandingPage.module.css'
 export default function LandingPage(){
+    const API_URL = `http://localhost:3000`;
     const [username,setUsername] = useState("");
     const [password,setPassword] = useState("");
 
@@ -11,12 +12,21 @@ export default function LandingPage(){
     const handlePassword=function(e:string){
         setPassword(e);
     }
-    const handleLogin = function(e:React.FormEvent){
+    const handleLogin = async function(e:React.FormEvent){
         e.preventDefault();  //stops page reload
 
         console.log(username);
         console.log(password);
 
+        let res = await fetch(`${API_URL}/login`,{
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({username: `${username}`, password: `${password}` }),
+        });
+
+       let resString = await res.json();
+        console.log(resString);
+        
     }
 
     return(
