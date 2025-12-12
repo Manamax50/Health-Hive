@@ -1,15 +1,23 @@
 *{
-   /* border: 5px solid red;*/
+    /* border: 5px solid red;*/
 }
 .dashboard{
     display:flex;
     justify-content: center;
+    margin-top: 60px;
+    flex-wrap:wrap;
 }
 
 .macros{
     width:400px;
-    height: 300px;
+    height: 200px;
 
     background-color: orange;
 
+}
+.cards{
+    position:relative;
+    
+    top:10px;
+    left: 20px;
 }

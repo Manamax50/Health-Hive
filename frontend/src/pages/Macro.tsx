@@ -9,10 +9,13 @@ type macro = {
 export default function Macro({nameOfClass, color, percentage}: macro){
 
     return(
-        <div className={`${styles[nameOfClass]} ${styles.progress}`} 
-            style={{"--percentage": percentage,"--color": color,}as React.CSSProperties}
-        >
-            {percentage}%
-        </div> 
+        <div className={`${styles['macro-wrapper']}`}>
+            <div className={`${styles[nameOfClass]} ${styles.progress}`} 
+                style={{"--percentage": percentage,"--color": color,}as React.CSSProperties}
+            />
+            <div className={styles.text}>
+                {percentage}% 
+            </div> 
+        </div>
     )
 }

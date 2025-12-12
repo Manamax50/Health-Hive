@@ -1,23 +1,41 @@
-.progress{
-    --size:140px;
-    --percentage:0;
-    --color: red;
-    width: var(--size);
-    height: var(--size);
-    border-radius: 50%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size: 32px;
-    font-weight:bold;
-    color: white;
-
-    background: conic-gradient(var(--color) calc(var(--percentage)*1%)),
-     gray calc(var(--percentage)*1%);
-    
-    mask: radial-gradient(circle, transparent 58%, black 60%);
-}
-
 .macros{
     display:flex;
+    width: 400;
+    gap:10px;
+   
+    background: #fff4ee;
+      box-shadow: inset 4px 4px 8px rgba(0,0,0,0.6),
+              inset -4px -4px 8px rgba(255,255,255,0.1);
+
+}
+.macro-wrapper{
+    width: 100px;
+    height: 100px;
+    position:relative;
+    
+}
+.progress{
+    --percentage:0;
+    --color: red;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+
+    color: rgb(160, 244, 173);
+
+    background: conic-gradient(var(--color) calc(var(--percentage)*1%), 
+    gray calc(var(--percentage)*1%));
+
+    mask: radial-gradient(circle, transparent 58%, black 60%);
+
+}
+.text{
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position:absolute;
+    font-size: 32px;
+    font-weight:bold;
+
 }
