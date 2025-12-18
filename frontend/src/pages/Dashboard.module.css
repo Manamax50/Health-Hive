@@ -10,14 +10,15 @@
 
 .macros{
     width:400px;
-    height: 200px;
+    
 
     background-color: orange;
 
 }
 .cards{
-    position:relative;
-    
-    top:10px;
-    left: 20px;
+    position:absolute;
+    display:flex;
+    justify-content: space-around;
+    top:200px;
+    align-items: center;
 }

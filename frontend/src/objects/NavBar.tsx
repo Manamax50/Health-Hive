@@ -5,10 +5,9 @@ export default function NavBar(){
 
     return (
         <div className={styles.navBar}>
-            <Button buttonName="Home"/>
-            <Button buttonName="login" />
-            <Button buttonName="help" />
-            <Button buttonName="preetgay" />
+            <Button  destination= "" buttonName="Home"/>
+            <Button destination="Dashboard" buttonName="Dashboard" />
+           
 
 
         

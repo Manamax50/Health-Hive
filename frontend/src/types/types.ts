@@ -1,5 +1,9 @@
 export type CardType = "steps" | "goals" | "workouts";
 
+export type button ={
+    destination: string,
+    buttonName: string,
+};
 export type StepsCardData = {
   type: "steps";
   title: "Steps";
