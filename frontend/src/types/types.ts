@@ -1,5 +1,9 @@
+import type {ReactNode} from 'react';
 export type CardType = "steps" | "goals" | "workouts";
 
+export type protectedRoute ={
+  page: ReactNode;
+};
 export type button ={
     destination: string,
     buttonName: string,

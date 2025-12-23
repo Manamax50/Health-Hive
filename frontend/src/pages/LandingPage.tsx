@@ -3,11 +3,12 @@ import myApi from '../api/axios.ts';
 import styles from './LandingPage.module.css'
 import {useNavigate} from 'react-router-dom'
 
+
 export default function LandingPage(){
     const API_URL = `http://localhost:3000`;
     const [username,setUsername] = useState("");
     const [password,setPassword] = useState("");
-
+    const navigate = useNavigate();
     const handleUsername = function(e:string){
         setUsername(e);
     }
@@ -21,18 +22,28 @@ export default function LandingPage(){
         console.log(username);
         console.log(password);
 
-        let res = await fetch(`${API_URL}/login`,{
+        let res = await myApi.post(`${API_URL}/login`,{
+            username: username,
+            password: password,
+
+        });
+        
+   /*     await fetch(`${API_URL}/login`,{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({username: `${username}`, password: `${password}` }),
         });
-        
-        let resString = await res.json();
+    */
+        let resString = res.data;
         const {status, token} = resString;
         console.log(status, token);
 
-        if (status === "success"){
+        if (status == "success!"){
+            console.log("it gets here");
             localStorage.setItem('token', token);
+            console.log("it gets here");
+            navigate('/Dashboard');
+            
 
         }
         console.log(resString);

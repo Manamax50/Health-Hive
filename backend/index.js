@@ -10,6 +10,15 @@ const ex_username = 'Maninder';
 const ex_password = 'password';
 const ex_secretKey= 'SecretKey';
 
+
+//userdata object
+function getUserData(){
+   //this is an example
+   //ideally you get this from database and assign to these values
+   let data = {username: ex_username, steps: 10000}
+   return data
+}
+//login endpoints
 app.get('/login', (request, response)=>{
    //yet to be implemented
    response.send({header:'hello world'});
@@ -25,13 +34,28 @@ app.post('/login', (req,res)=>{
          {expiresIn: "1hour" },
       );
       console.log(jwt.decode(token));
-      res.send({success:'success!', token: token});
+      res.send({status:'success!', token: token});
 
    }else{
-      res.send({success:'not good'});
+      res.send({status:'not good'});
    }
 
 });
+
+
+//dashboard endpoints
+
+app.get('/dashboard', (req,res)=>{
+   attachedToken = req.headers(Authorization);
+
+
+   if (attachedToken = token){
+      
+      res.json(getUserData());
+   }
+});
+
+
 
 //start a port to listen on
 
