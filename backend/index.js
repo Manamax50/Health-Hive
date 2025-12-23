@@ -13,14 +13,15 @@ const ex_secretKey= 'SecretKey';
 
 //middleware function that will authenticate and assign the user based on token
 function Auth(req, res, next){
-   const token = req.headers.Authorization?.split(' ')[1]; // get the token from the headers if it exists
-
+   const token = req.headers?.authorization?.split(' ')[1]; // get the token from the headers if it exists
+   console.log("it gets to th middleware function ")
    if (!token){
       return res.status(401).json({error:"not authenticated"});
    }
 
-   req.user = token.decode(ex_secretKey).username;
+   req.user = jwt.verify(token, ex_secretKey).username;
    next();
+
 }
 
 
@@ -30,7 +31,7 @@ function getUserData(username){
    //ex incoming json from db with user attribute
    let users = {
       Maninder:{
-      steps: 10100,
+      steps: 10105,
       },
       randomName:{
          steps:200 //lazy ass
@@ -68,10 +69,12 @@ app.post('/login', (req,res)=>{
 
 //dashboard endpoints
 
-app.get('/dashboard', Auth(), (req,res)=>{
-   username = req.user;
+app.get('/Dashboard', Auth, (req,res)=>{
+   console.log("it gets to the /dashboard")
+   const username = req.user;
    let userData = getUserData(username);
    res.json(userData);
+   console.log(userData);
 
 });
 

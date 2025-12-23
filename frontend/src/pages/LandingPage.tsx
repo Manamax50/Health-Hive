@@ -22,7 +22,7 @@ export default function LandingPage(){
         console.log(username);
         console.log(password);
 
-        let res = await myApi.post(`${API_URL}/login`,{
+        let res = await myApi.post(`/login`,{
             username: username,
             password: password,
 

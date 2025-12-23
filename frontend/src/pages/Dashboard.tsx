@@ -37,7 +37,7 @@ export default function Dashboard(){
       let {steps} = res.data;
       cards[0].value = steps;
     } 
-
+    getUserInfo();
   },[]);
 
 
