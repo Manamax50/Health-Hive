@@ -11,11 +11,34 @@ const ex_password = 'password';
 const ex_secretKey= 'SecretKey';
 
 
+//middleware function that will authenticate and assign the user based on token
+function Auth(req, res, next){
+   const token = req.headers.Authorization?.split(' ')[1]; // get the token from the headers if it exists
+
+   if (!token){
+      return res.status(401).json({error:"not authenticated"});
+   }
+
+   req.user = token.decode(ex_secretKey).username;
+   next();
+}
+
+
 //userdata object
-function getUserData(){
+function getUserData(username){
+
+   //ex incoming json from db with user attribute
+   let users = {
+      Maninder:{
+      steps: 10100,
+      },
+      randomName:{
+         steps:200 //lazy ass
+      },
+   };
    //this is an example
    //ideally you get this from database and assign to these values
-   let data = {username: ex_username, steps: 10000}
+   let data = users[username];
    return data
 }
 //login endpoints
@@ -45,14 +68,11 @@ app.post('/login', (req,res)=>{
 
 //dashboard endpoints
 
-app.get('/dashboard', (req,res)=>{
-   attachedToken = req.headers(Authorization);
+app.get('/dashboard', Auth(), (req,res)=>{
+   username = req.user;
+   let userData = getUserData(username);
+   res.json(userData);
 
-
-   if (attachedToken = token){
-      
-      res.json(getUserData());
-   }
 });
 
 

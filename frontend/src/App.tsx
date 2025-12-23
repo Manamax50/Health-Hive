@@ -7,12 +7,13 @@ import ProtectedRoute from './protectedRoutes/protectedRoutes';
 
 
 function App() {
+  
   return (
     <BrowserRouter>
       <NavBar />
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/Dashboard" element={<ProtectedRoute page ={<Dashboard />}/>}/>
+        <Route path="/Dashboard" element={<ProtectedRoute page ={<Dashboard/>}/>}/>
 
       </Routes>
     </BrowserRouter>
