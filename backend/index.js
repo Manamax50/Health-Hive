@@ -1,6 +1,6 @@
-const express = require('express');
-const cors = require('cors');
-const jwt = require('jsonwebtoken');
+import express from'express';
+import cors from 'cors';
+import jwt from'jsonwebtoken';
 
 const app = express();
 app.use(cors());

@@ -1,5 +1,8 @@
 import {useState} from 'react';
+import myApi from '../api/axios.ts';
 import styles from './LandingPage.module.css'
+import {useNavigate} from 'react-router-dom'
+
 export default function LandingPage(){
     const API_URL = `http://localhost:3000`;
     const [username,setUsername] = useState("");
@@ -23,8 +26,15 @@ export default function LandingPage(){
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({username: `${username}`, password: `${password}` }),
         });
+        
+        let resString = await res.json();
+        const {status, token} = resString;
+        console.log(status, token);
 
-       let resString = await res.json();
+        if (status === "success"){
+            localStorage.setItem('token', token);
+
+        }
         console.log(resString);
         
     }
