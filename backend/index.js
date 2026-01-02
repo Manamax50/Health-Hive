@@ -11,16 +11,30 @@ const ex_password = 'password';
 const ex_secretKey= 'SecretKey';
 
 
+
 //middleware function that will authenticate and assign the user based on token
 function Auth(req, res, next){
    const token = req.headers?.authorization?.split(' ')[1]; // get the token from the headers if it exists
+
+
    console.log("it gets to th middleware function ")
+
+   jwt.decode(ex_secretKey)
    if (!token){
       return res.status(401).json({error:"not authenticated"});
+        console.log("it gets to the try block");
+   }
+   try{
+      const verifiedToken = jwt.verify(token, ex_secretKey).username;
+      req.user = verifiedToken;
+   } catch(error){
+         console.log(error);
+         return res.send({error: "expired Token"});
+      
    }
 
-   req.user = jwt.verify(token, ex_secretKey).username;
    next();
+
 
 }
 
